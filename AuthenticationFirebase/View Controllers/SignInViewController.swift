@@ -54,4 +54,13 @@ class SignInViewController: UIViewController {
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         checkAuth(email: email, password: password)
     }
+  
+  @IBAction func signInWithAppleButtonPressed(_ sender: UIButton) {
+    AuthService.shared.startSignInWithAppleFlow(presentationWindow: self.view.window!) {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let viewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+      
+      self.navigationController?.pushViewController(viewController, animated: true)
+    }
+  }
 }

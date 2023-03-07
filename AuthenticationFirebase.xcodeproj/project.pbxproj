@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		55436DAE29B6547A0046AF92 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55436DAD29B6547A0046AF92 /* GoogleService-Info.plist */; };
+		55436DB229B7C68C0046AF92 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55436DB129B7C68C0046AF92 /* AuthenticationServices.framework */; };
 		725A0C9E29B130E90047484A /* ColorSet.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 725A0C9D29B130E90047484A /* ColorSet.xcassets */; };
 		728265B629B145840067BD1F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728265B529B145840067BD1F /* AuthService.swift */; };
 		728265B829B1466A0067BD1F /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728265B729B1466A0067BD1F /* RegisterUserRequest.swift */; };
@@ -27,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		55436DAD29B6547A0046AF92 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		55436DAF29B780C50046AF92 /* AuthenticationFirebase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AuthenticationFirebase.entitlements; sourceTree = "<group>"; };
+		55436DB129B7C68C0046AF92 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		725A0C9D29B130E90047484A /* ColorSet.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorSet.xcassets; sourceTree = "<group>"; };
 		728265B529B145840067BD1F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		728265B729B1466A0067BD1F /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55436DB229B7C68C0046AF92 /* AuthenticationServices.framework in Frameworks */,
 				72AD8FA329A9165700C2EB21 /* FirebaseAuth in Frameworks */,
 				72AD8FA529A9165700C2EB21 /* FirebaseFirestore in Frameworks */,
 			);
@@ -57,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55436DB029B7C68C0046AF92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55436DB129B7C68C0046AF92 /* AuthenticationServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		728265B929B147400067BD1F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +83,7 @@
 			children = (
 				72AD8F8A29A913AE00C2EB21 /* AuthenticationFirebase */,
 				72AD8F8929A913AE00C2EB21 /* Products */,
+				55436DB029B7C68C0046AF92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +98,7 @@
 		72AD8F8A29A913AE00C2EB21 /* AuthenticationFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				55436DAF29B780C50046AF92 /* AuthenticationFirebase.entitlements */,
 				72AD8F9129A913AE00C2EB21 /* Main.storyboard */,
 				728265B529B145840067BD1F /* AuthService.swift */,
 				72B58B9929B13E2B003D7EEA /* View Controllers */,
@@ -352,8 +366,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = dkblue;
+				CODE_SIGN_ENTITLEMENTS = AuthenticationFirebase/AuthenticationFirebase.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V46QWZQ9X2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AuthenticationFirebase/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -379,8 +395,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = dkblue;
+				CODE_SIGN_ENTITLEMENTS = AuthenticationFirebase/AuthenticationFirebase.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V46QWZQ9X2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AuthenticationFirebase/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -25,7 +25,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IqM-Dt-R3o">
-                                <rect key="frame" x="0.0" y="288" width="393" height="510"/>
+                                <rect key="frame" x="0.0" y="288" width="393" height="427.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOK-qH-Rhh">
                                         <rect key="frame" x="147" y="0.0" width="99" height="41"/>
@@ -84,11 +84,24 @@
                                             <action selector="signInButtonPressed:" destination="v0x-53-2aJ" eventType="touchUpInside" id="aiD-Ta-AfN"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1T-mO-SDh">
+                                        <rect key="frame" x="30" y="288" width="333" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="2zs-EA-0Ff"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Sign in with Apple">
+                                            <color key="baseBackgroundColor" systemColor="labelColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="signInWithAppleButtonPressed:" destination="v0x-53-2aJ" eventType="touchUpInside" id="sfg-mr-3dS"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EYN-dl-rPb">
-                                        <rect key="frame" x="77.333333333333329" y="288" width="238.66666666666669" height="222"/>
+                                        <rect key="frame" x="77.333333333333329" y="348" width="238.66666666666669" height="79.333333333333314"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDI-NO-3eS">
-                                                <rect key="frame" x="0.0" y="0.0" width="238.66666666666666" height="177"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="238.66666666666666" height="34.333333333333336"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="QZ5-Fs-2et"/>
                                                     <constraint firstAttribute="height" constant="34.329999999999998" id="odD-sm-iTy"/>
@@ -101,7 +114,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odc-zk-TbR">
-                                                <rect key="frame" x="39.333333333333343" y="187" width="160" height="35"/>
+                                                <rect key="frame" x="39.333333333333343" y="44.333333333333371" width="160" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="WqD-Bk-8w4"/>
                                                 </constraints>
@@ -117,9 +130,10 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="d3y-eJ-QSg" firstAttribute="leading" secondItem="IqM-Dt-R3o" secondAttribute="leading" constant="30" id="HIt-wK-sz9"/>
+                                    <constraint firstAttribute="trailing" secondItem="d1T-mO-SDh" secondAttribute="trailing" constant="30" id="KlE-94-Qbz"/>
                                     <constraint firstItem="ddJ-pc-WkS" firstAttribute="leading" secondItem="IqM-Dt-R3o" secondAttribute="leading" constant="30" id="VRC-az-7mV"/>
                                     <constraint firstAttribute="trailing" secondItem="d3y-eJ-QSg" secondAttribute="trailing" constant="30" id="Xmc-jC-PpD"/>
-                                    <constraint firstItem="EYN-dl-rPb" firstAttribute="top" secondItem="d3y-eJ-QSg" secondAttribute="bottom" constant="20" id="lkO-QW-TLF"/>
+                                    <constraint firstItem="d1T-mO-SDh" firstAttribute="leading" secondItem="IqM-Dt-R3o" secondAttribute="leading" constant="30" id="Yas-1d-fT9"/>
                                     <constraint firstAttribute="trailing" secondItem="ddJ-pc-WkS" secondAttribute="trailing" constant="30" id="y3U-td-tdn"/>
                                 </constraints>
                             </stackView>
@@ -456,6 +470,9 @@
         <namedColor name="medblue">
             <color red="0.22400000691413879" green="0.57999998331069946" blue="0.77600002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
