@@ -27,25 +27,26 @@ class SignInViewController: UIViewController {
     }
     
     func checkAuth(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) {
-            result, error in
-            if error != nil {
-               print("authentication error")
-            } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-                
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+      let signInRequest = LoginUserRequest(email: email, password: password)
+      
+      AuthService.shared.signIn(with: signInRequest) { signInError in
+        if let error = signInError {
+          print(error.localizedDescription)
+        } else {
+          let storyboard = UIStoryboard(name: "Main", bundle: nil)
+          let viewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+          
+          self.navigationController?.pushViewController(viewController, animated: true)
         }
+      }
     }
     
-//    func validateFields() -> String? {
-//        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-//            return "Please fill in all fields."
-//        }
-//        return nil
-//    }
+    func validateFields() -> String? {
+        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "Please fill in all fields."
+        }
+        return nil
+    }
 
 
     @IBAction func signInButtonPressed(_ sender: UIButton) {

@@ -26,40 +26,74 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var retypePasswordTextField: UITextField!
-    
-//    let db = Firestore.firestore()
+    @IBOutlet weak var messageLabel: UILabel!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+      super.viewDidLoad()
+      
+      self.navigationItem.hidesBackButton = true;
     }
     
-    func validateFields() -> String? {
-        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return "Please fill in all fields."
+    func resetFields() {
+        firstNameTextField.text = ""
+        lastNameTextField.text = ""
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        retypePasswordTextField.text = ""
+    }
+    
+    func checkForEmptyFields() -> Bool {
+        if emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            retypePasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            messageLabel.text = "All fields must be filled in."
+            resetFields()
+            return true
+        } else {
+            return false
         }
-        return nil
+    }
+    
+    func checkForMismatchedPasswords() -> Bool {
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let retypePassword = retypePasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if password != retypePassword {
+            messageLabel.text = "Passwords do not match."
+            resetFields()
+           return true
+        } else {
+            return false
+        }
+    }
+    
+    func validateFields() -> Bool {
+        let fieldStatus = checkForEmptyFields()
+        let passwordStatus = checkForMismatchedPasswords()
+        if fieldStatus && passwordStatus == true {
+            return false
+        }
+        return true
+    }
+        
+    func registerUser() {
+   
+      let userRequest = RegisterUserRequest(email: emailTextField.text!, password: passwordTextField.text!)
+      AuthService.shared.registerUser(with: userRequest) { success, error in
+        if !success {
+          if let newError = error {
+            print(newError.localizedDescription)
+          }
+        } else {
+          self.performSegue(withIdentifier: "registered", sender: self)
+        }
+      }
     }
     
 
     @IBAction func signInButtonPressed(_ sender: UIButton) {
-        let error = validateFields()
-        if error != nil {
-            print("All fields need to be filled.")
-        } else {
-            let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-//            Auth.auth().createUser(withEmail: email, password: password) {
-//                result, err in
-//                if err != nil {
-//                    print("Error creating user.")
-//                }
-//                guard let resultUser = result?.user else {
-//                    return
-//                }
-//            }
+        let validated = validateFields()
+        if validated {
+            registerUser()
+            }
         }
-    }
 }
